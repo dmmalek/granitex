@@ -6,9 +6,23 @@
   @apply p-0 m-0 box-border;
 }
 
+img {
+  @apply max-w-full inline-block
+  /* max-width: 100%;
+  display: inline-block; */;
+}
+
+.container {
+  @apply max-w-6xl w-[calc(100%-3rem)] mx-auto;
+}
+
 .btn {
   @apply uppercase px-10 py-4 text-white bg-blue-500 transition-all duration-300 font-semibold rounded-full leading-none inline-block;
 }
+.btn:hover {
+  @apply bg-red-500;
+}
+
 .footer__icon {
   @apply text-white  rounded-full w-10 h-10 flex items-center justify-center text-center;
 }
