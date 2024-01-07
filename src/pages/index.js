@@ -3,6 +3,7 @@ import Hero from "@/Home/Hero";
 import Footer from "@/component/global/Footer";
 import Cta from "@/Home/Cta";
 import Reviews from "@/Home/Reviews";
+import Rooms from "@/Home/Rooms";
 import React from "react";
 
 const index = () => {
@@ -10,6 +11,7 @@ const index = () => {
     <div>
       <Header />
       <Hero />
+      <Rooms />
       <Cta />
       <Reviews />
       <Footer />
