@@ -8,7 +8,7 @@ import { FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <section>
+    <footer>
       <div className="bg-gray-200  flex flex-col gap-4 py-10 px-20">
         <div className="flex justify-between items-center">
           <div className="font-semibold">
@@ -43,7 +43,7 @@ const Footer = () => {
         </div>
         <div className="copyright">© 2024 - 2025 realestate.com</div>
       </div>
-    </section>
+    </footer>
   );
 };
 
