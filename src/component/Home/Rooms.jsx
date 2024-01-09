@@ -15,7 +15,7 @@ const Rooms = () => {
               Featured Properties
             </h2>
           </div>
-          <div className="grid grid-cols-3 gap-4 container">
+          <div className="grid grid-cols-1 gap-10 items-center sm:grid-cols-3 sm:gap-4 container">
             <div className="bg-white  text-[#000000cc] border rounded shadow-lg shadow-slate-500/50">
               <div className="mb-4">
                 <a

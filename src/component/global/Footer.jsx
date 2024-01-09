@@ -9,9 +9,9 @@ import { FaYoutube } from "react-icons/fa";
 const Footer = () => {
   return (
     <footer>
-      <div className="bg-gray-200  flex flex-col gap-4 py-10 px-20">
-        <div className="flex justify-between items-center">
-          <div className="font-semibold">
+      <div className="bg-gray-200  flex flex-col sm:justify-between sm:items-center gap-4 py-10 px-5 sm:px-20">
+        <div className="flex flex-col sm:justify-between sm:items-center gap-4">
+          <div className="flex flex-wrap font-semibold mb-4 gap-5">
             <Link href=""> ABOUT US </Link>
             <span>|</span>
             <Link href=""> CONTACT US </Link>
@@ -20,7 +20,7 @@ const Footer = () => {
             <span>|</span>
             <Link href=""> TERMS & PRIVACY POLICY </Link>
           </div>
-          <div className="flex justify-between items-center gap-4 text-2xl ">
+          <div className="flex justify-between items-center gap-2 sm:gap-4 text-2xl mb-4">
             <Link className="bg-[#0866FF]  footer__icon" href="#">
               <FaFacebookF />
             </Link>

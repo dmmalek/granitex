@@ -26,3 +26,8 @@ img {
 .footer__icon {
   @apply text-white  rounded-full w-10 h-10 flex items-center justify-center text-center;
 }
+
+input:focus,
+textarea:focus {
+  outline: none;
+}
