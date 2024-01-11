@@ -4,59 +4,74 @@ import { PiArmchair } from "react-icons/pi";
 import { FaRegBuilding } from "react-icons/fa";
 import { GiStairs } from "react-icons/gi";
 import { CiBookmark } from "react-icons/ci";
-import { FaMobileRetro } from "react-icons/fa6";
 import { FaWhatsapp } from "react-icons/fa";
-import GalleryImage from "./GalleryImage";
+import { FaMapMarked } from "react-icons/fa";
+import { useEffect, useState } from "react";
 
-const Property = () => {
+const Property = ({ data }) => {
+  const {
+    Area,
+    Bathroom,
+    Bedroom,
+    City,
+    Code,
+    Contact,
+    Description,
+    Furnished,
+    Price,
+    RentalPeriod,
+    Title,
+  } = data?.attributes || {};
   return (
     <div>
-      <div className="container my-10">
-        <GalleryImage />
-      </div>
-      <div className="mb-20 container">
-        <div className="grid place-content-center sm:flex gap-10">
+      <div className="mb-20 container mt-10">
+        <div className="grid place-content-center place-items-center md:flex md:items-center gap-10">
           <div className="grid container place-items-start w-8/12 ">
             <div className="mb-10 text-[#484848]">
-              <h1 class="text-2xl text-black-48 lg:mb-1 font-semibold leading-tight">
-                Samara Suites Apartment
-              </h1>
-              <p className="text-sm text-black-48 lg:mb-1 uppercase">SMSB001</p>
+              <div className="grid gap-1 mb-1n sm:flex sm:justify-between sm:items-center sm:gap-5">
+                <h1 className="text-2xl text-black-48 lg:mb-1 font-semibold leading-tight">
+                  {Title}
+                </h1>
+                <span className="flex items-center gap-1">
+                  <FaMapMarked />
+                  {City}
+                </span>
+              </div>
+
+              <p className="text-sm text-black-48 lg:mb-1 uppercase">{Code}</p>
             </div>
-            <div className="grid grid-cols-3 gap-20 sm:flex sm:gap-10 sm:justify-center sm:items-center sm:mb-20 text-gray-800">
-              <div className="grid place-content-center text-center h-8 w-10">
+            <div className="grid grid-cols-3 gap-6 sm:flex sm:gap-10 sm:justify-center sm:items-center sm:mb-5 text-gray-800">
+              <div className="flex flex-col items-center justify-center">
                 <span className="text-5xl">
                   <IoBedOutline />
                 </span>
-                <span> 1BR </span>
+                <span> {Bedroom}BR </span>
               </div>
-              <div className="grid place-content-center text-center h-8 w-15">
+              <div className="flex flex-col items-center justify-center">
                 <span className="text-5xl">
                   <BiBath />
                 </span>
-                <span> 1 Bathroom </span>
+                <span> {Bathroom} Bathroom </span>
               </div>
-              <div className="grid place-content-center text-center h-8 w-15">
+              <div className="flex flex-col items-center justify-center">
                 <span className="text-5xl">
                   <PiArmchair />
                 </span>
-                <span> Fully Furnished </span>
+                <span> {Furnished} </span>
               </div>
-              <div className="grid place-content-center text-center h-8 w-15">
+              <div className="flex flex-col items-center justify-center">
                 <span className="text-5xl">
                   <IoBedOutline />
                 </span>
-                <span>
-                  44 m<sup>2</sup>
-                </span>
+                <span>{Area} sqft</span>
               </div>
-              <div className="grid place-content-center text-center h-8 w-15">
+              <div className="flex flex-col items-center justify-center">
                 <span className="text-5xl">
                   <GiStairs />
                 </span>
                 <span>High Floor</span>
               </div>
-              <div className="grid place-content-center text-center h-8 w-15">
+              <div className="flex flex-col items-center justify-center">
                 <span className="text-5xl">
                   <FaRegBuilding />
                 </span>
@@ -75,38 +90,30 @@ const Property = () => {
                 <hr />
               </div>
               <h2 className="mb-10">
-                Apartment Samara Suites Apartment unit SMSB001
+                {Title} unit {Code}
               </h2>
-              <p className="text-base text-justify">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Quisquam voluptatum, quidem quibusdam, voluptates, asperiores
-                quia consequatur voluptatem dolorum quod quos eaque. Quisquam
-                voluptatum, quidem quibusdam, voluptates, asperiores quia
-                consequatur voluptatem dolorum quod quos eaque.
-              </p>
+              <p className="text-base text-justify">{Description}</p>
             </div>
           </div>
-          <div className="sm:w-4/12">
+          <div className="sm:w-4/12 text-center">
             <aside>
-              <div className="grid place-content-center sm:py-10 border rounded w-full">
-                <p className="text-xs text-black-48 mb-4 text-center mt-1 font-medium">
+              <div className="grid place-content-center p-4 sm:py-10 border rounded w-full">
+                <p className="text-base text-black-48 mb-4 text-center mt-1 font-medium">
                   Rental Period
                 </p>
                 <p className=" rounded mb-8 flex-grow text-center font-medium cursor-pointer text-white bg-[#004274]">
-                  12<span className="text-sm">mo</span>
+                  {RentalPeriod}
+                  <span className="text-sm"> mo </span>
                 </p>
                 <p className="mb-6">Pay Directly for 12 Months</p>
-                <p className="text-2xl font-semibold mb-4 text-[#004274]">
-                  <sup>Rp</sup>120,000,000
+                <p className="text-3xl font-semibold mb-4 text-[#004274]">
+                  ${Price}
                 </p>
-                <div className="flex justify-center items-center">
-                  <span>
-                    <FaMobileRetro />
-                  </span>
-                  <span>
+                <div className="flex gap-2 justify-center items-center text-2xl">
+                  <span className="text-[#28A219]">
                     <FaWhatsapp />
                   </span>
-                  <p>+880 1511 1234</p>
+                  <p>{Contact}</p>
                 </div>
               </div>
             </aside>

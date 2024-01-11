@@ -4,48 +4,27 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import { useState } from "react";
 
-const GalleryImage = () => {
+const GalleryImage = ({ gallery }) => {
   return (
-    <div className="gallary ">
+    <div className="gallary container mt-10">
       <Swiper
         modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={50}
         slidesPerView={1}
         navigation
         pagination={{ clickable: true }}
-        // scrollbar={{ draggable: true }}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log("slide change")}
       >
-        <SwiperSlide>
-          <img
-            className=" rounded"
-            src="/assets/SlideImage/bedroom-00.jpg"
-            alt=""
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            className=" rounded"
-            src="/assets/SlideImage/bedroom-03.jpg"
-            alt=""
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            className=" rounded"
-            src="/assets/SlideImage/spacejoy-scaled.jpg"
-            alt=""
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            className=" rounded"
-            src="/assets/SlideImage/dining-01.jpg"
-            alt=""
-          />
-        </SwiperSlide>
+        {gallery?.map((item, index) => (
+          <SwiperSlide key={index}>
+            <img
+              className=" rounded w-full h-[500px] object-cover"
+              src={`http://localhost:1337${item}`}
+              alt=""
+            />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   );
