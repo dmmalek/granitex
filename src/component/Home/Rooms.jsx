@@ -5,7 +5,8 @@ import { IoBedOutline } from "react-icons/io5";
 import { LiaBathSolid } from "react-icons/lia";
 import { MdOutlineCheckBoxOutlineBlank } from "react-icons/md";
 
-const Rooms = () => {
+const Rooms = ({ filter, maxRoom = 6 }) => {
+  const [initialRooms, setInitialRooms] = useState([]);
   const [rooms, setRooms] = useState([]);
   useEffect(() => {
     const fetchRooms = async () => {
@@ -14,6 +15,7 @@ const Rooms = () => {
           "http://localhost:1337/api/rooms?populate=*"
         );
         setRooms(res.data.data);
+        setInitialRooms(res.data.data);
       } catch (error) {
         console.error("Error fetching data");
       }
@@ -21,6 +23,43 @@ const Rooms = () => {
     fetchRooms();
   }, []);
 
+  useEffect(() => {
+    if (initialRooms && filter) {
+      let allRooms = initialRooms;
+      if (filter.city) {
+        const filteredRooms = allRooms.filter(
+          (room) => room.attributes.City == filter.city
+        );
+        allRooms = filteredRooms;
+      }
+
+      if (filter.bedroom) {
+        const filteredRooms = allRooms.filter(
+          (room) => room.attributes.Bedroom == filter.bedroom
+        );
+        allRooms = filteredRooms;
+      }
+
+      if (filter.bathroom) {
+        const filteredRooms = allRooms.filter(
+          (room) => room.attributes.Bathroom == filter.bathroom
+        );
+        allRooms = filteredRooms;
+      }
+
+      if (filter.price) {
+        const filteredRooms = allRooms.filter(
+          (room) =>
+            room.attributes.Price >= filter.price.min &&
+            room.attributes.Price <= filter.price.max
+        );
+        allRooms = filteredRooms;
+      }
+
+      setRooms(allRooms);
+    }
+  }, [filter]);
+  console.log(filter);
   return (
     <div>
       <section className="container py-10 grid gap-4 mt-20">
@@ -32,13 +71,16 @@ const Rooms = () => {
             </h2>
           </div>
           <div className="grid grid-cols-1 gap-10 items-center sm:grid-cols-3 sm:gap-4 container">
-            {rooms?.slice(0, 6)?.map((item, index) => {
+            {rooms?.slice(0, maxRoom)?.map((item, index) => {
               const { Title, Area, Bathroom, Bedroom, Price, City, Gallery } =
                 item?.attributes;
               const { url } = Gallery?.data[0]?.attributes;
 
               return (
-                <div className="bg-white  text-[#000000cc] border rounded shadow-lg shadow-slate-500/50">
+                <div
+                  key={index}
+                  className="bg-white  text-[#000000cc] border rounded shadow-lg shadow-slate-500/50"
+                >
                   <div className="mb-4">
                     <a
                       href="#"

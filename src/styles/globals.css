@@ -31,3 +31,9 @@ input:focus,
 textarea:focus {
   outline: none;
 }
+:where(.css-dev-only-do-not-override-dkbvqv).ant-slider .ant-slider-rail {
+  background: #ffffff !important;
+}
+:where(.css-dev-only-do-not-override-dkbvqv).ant-slider:hover .ant-slider-rail {
+  background-color: rgb(255, 255, 255) !important;
+}

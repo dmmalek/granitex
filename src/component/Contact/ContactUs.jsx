@@ -1,6 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 
 const ContactUs = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+  console.log(formData);
+  const sendData = async (data) => {
+    try {
+      const res = await axios.post("http://localhost:1337/api/contacts", data);
+      console.log(res.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div>
       <div className="grid container gap-5 my-10 ">
@@ -34,6 +53,8 @@ const ContactUs = () => {
                 name="name"
                 id="name"
                 placeholder="Name"
+                value={formData.name}
+                onChange={handleChange}
               />
             </div>
             <div>
@@ -43,6 +64,8 @@ const ContactUs = () => {
                 name="email"
                 id="email"
                 placeholder="Email"
+                value={formData.email}
+                onChange={handleChange}
               />
             </div>
             <div>
@@ -52,6 +75,8 @@ const ContactUs = () => {
                 name="subject"
                 id="subject"
                 placeholder="Subject"
+                value={formData.subject}
+                onChange={handleChange}
               />
             </div>
             <div>
@@ -60,11 +85,29 @@ const ContactUs = () => {
                 name="message"
                 id="message"
                 placeholder="Message"
+                value={formData.message}
+                onChange={handleChange}
               ></textarea>
             </div>
             <div>
               <span>
-                <button className="btn">Send Message</button>
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    const data = {
+                      data: {
+                        Name: formData.name,
+                        Email: formData.email,
+                        Subject: formData.subject,
+                        Message: formData.message,
+                      },
+                    };
+                    sendData(data);
+                  }}
+                  className="btn"
+                >
+                  Send Message
+                </button>
               </span>
             </div>
           </form>
