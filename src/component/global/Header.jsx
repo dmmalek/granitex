@@ -11,7 +11,7 @@ const Header = () => {
         <div className="">
           <Link href="/">
             <h2 className="flex justify-between items-center text-2xl ">
-              Real Estate
+              Granitex
             </h2>
           </Link>
         </div>
