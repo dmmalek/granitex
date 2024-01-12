@@ -7,7 +7,7 @@ const index = () => {
   return (
     <>
       <Header />
-      <Featured title="Property" />
+      <Featured title="Contact" />
       <ContactUs />
       <Footer />
     </>

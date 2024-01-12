@@ -13,7 +13,7 @@ const index = () => {
     <div>
       <Header />
       <Hero />
-      <Rooms />
+      <Rooms hideText={true} />
       <About />
       <Cta />
       <Reviews />

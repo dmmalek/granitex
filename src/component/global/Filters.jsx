@@ -3,9 +3,9 @@ import React, { useEffect, useState } from "react";
 const { Option } = Select;
 
 const Filters = ({ setFilter }) => {
-  const [city, setCity] = useState("");
-  const [bedroom, setBedroom] = useState("");
-  const [bathroom, setBathroom] = useState("");
+  const [city, setCity] = useState(null);
+  const [bedroom, setBedroom] = useState(null);
+  const [bathroom, setBathroom] = useState(null);
   const [price, setPrice] = useState({
     min: 0,
     max: 7400,
@@ -42,9 +42,9 @@ const Filters = ({ setFilter }) => {
   };
 
   const handleClearFilter = () => {
-    setCity("");
-    setBedroom("");
-    setBathroom("");
+    setCity(null);
+    setBedroom(null);
+    setBathroom(null);
     setPrice({ min: 0, max: 7400 });
   };
 

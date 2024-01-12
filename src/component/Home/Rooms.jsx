@@ -5,7 +5,7 @@ import { IoBedOutline } from "react-icons/io5";
 import { LiaBathSolid } from "react-icons/lia";
 import { MdOutlineCheckBoxOutlineBlank } from "react-icons/md";
 
-const Rooms = ({ filter, maxRoom = 6 }) => {
+const Rooms = ({ filter, maxRoom = 6, hideText = false }) => {
   const [initialRooms, setInitialRooms] = useState([]);
   const [rooms, setRooms] = useState([]);
   useEffect(() => {
@@ -59,17 +59,20 @@ const Rooms = ({ filter, maxRoom = 6 }) => {
       setRooms(allRooms);
     }
   }, [filter]);
-  console.log(filter);
   return (
     <div>
       <section className="container py-10 grid gap-4 mt-20">
         <div>
-          <div className="grid text-center">
-            <p className="text-[#004274] mb-5 font-semibold">OUR PROPERTIES</p>
-            <h2 className="text-5xl text-[#000000cc] font-bold mb-10">
-              Featured Properties
-            </h2>
-          </div>
+          {hideText && (
+            <div className="grid text-center">
+              <p className="text-[#004274] mb-5 font-semibold">
+                OUR PROPERTIES
+              </p>
+              <h2 className="text-5xl text-[#000000cc] font-bold mb-10">
+                Featured Properties
+              </h2>
+            </div>
+          )}
           <div className="grid grid-cols-1 gap-10 items-center sm:grid-cols-3 sm:gap-4 container">
             {rooms?.slice(0, maxRoom)?.map((item, index) => {
               const { Title, Area, Bathroom, Bedroom, Price, City, Gallery } =
